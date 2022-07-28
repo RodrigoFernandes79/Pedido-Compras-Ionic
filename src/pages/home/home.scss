@@ -1,3 +1,16 @@
 page-home {
-
+    h3 {
+        text-align: center;
+        color: gray;
+        font-weight: bold;
+    }
+    img {
+        max-width: 100%;
+        border: 0;
+        align-items: center;
+        width: 200px;
+        margin: auto;
+        display: block;
+        padding: 10px;
+    }
 }
