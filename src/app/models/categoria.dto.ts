@@ -1,4 +1,4 @@
-export interface CategoriaDTO{
+export class CategoriaDTO{
 
 	id:string;
 	nome:string;
