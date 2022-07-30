@@ -1,9 +1,13 @@
+
+
 import { Dev_Config } from './../../app/config/dev.config';
 
 import { CategoriaService } from './../../services/models/categoria.service';
-import { Component } from '@angular/core';
+import { Component,  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CategoriaDTO } from '../../app/models/categoria.dto';
+
+
 
 /**
  * Generated class for the CategoriasPage page.
@@ -33,8 +37,14 @@ export class CategoriasPage {
 			this.items = response;
 			console.log(response)
 		},
-		error =>{console.log(error)
-	});
+		error =>{
+
+			console.log(error.message);
+		}
+	);
+}
 }
 
-}
+
+
+
