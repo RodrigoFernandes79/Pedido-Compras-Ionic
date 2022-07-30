@@ -19,7 +19,7 @@ export class CategoriaService{
 	}
 
 		findAll(): Observable<CategoriaDTO>{
-			return this.http.get<CategoriaDTO>(`${Dev_Config.baseUrl}/categoriass`);
+			return this.http.get<CategoriaDTO>(`${Dev_Config.baseUrl}/categorias`);
 		}
 
 
