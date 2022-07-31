@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Dev_Config } from '../../app/config/dev.config';
-import { ClienteDTO } from '../../app/models/cliente.dto';
+import { Dev_Config } from '../../config/dev.config';
+import { ClienteDTO } from '../../models/cliente.dto';
 import { StorageService } from '../storage.service';
 
 
@@ -14,12 +14,7 @@ export class ClienteService{
 	}
 
 	findByEmail( email: string):Observable<ClienteDTO>{
-
-		let token = this.storage.getLocalUser().token
-		let authHeader = new HttpHeaders({'Authorization':`Bearer ${token}`})
-
-		return this.http.get<ClienteDTO>(`${Dev_Config.baseUrl}/clientes/email?email=${email}`,
-		{'headers' : authHeader})
+		return this.http.get<ClienteDTO>(`${Dev_Config.baseUrl}/clientes/email?email=${email}`)
 
 	}
 

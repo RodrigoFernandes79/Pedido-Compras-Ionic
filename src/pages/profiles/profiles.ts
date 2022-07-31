@@ -1,11 +1,11 @@
-import { ClienteDTO } from './../../app/models/cliente.dto';
+import { ClienteDTO } from '../../models/cliente.dto';
 
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
 import { ClienteService } from '../../services/models/cliente.service';
-import { Dev_Config } from '../../app/config/dev.config';
+import { Dev_Config } from '../../config/dev.config';
 
 
 

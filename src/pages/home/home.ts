@@ -1,4 +1,4 @@
-import { CredenciaisDTO } from './../../app/models/credenciais.dto';
+import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';

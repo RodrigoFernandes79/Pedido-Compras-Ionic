@@ -3,11 +3,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dev_Config } from '../../app/config/dev.config';
+import { Dev_Config } from '../../config/dev.config';
 
 
 
-import { CategoriaDTO } from '../../app/models/categoria.dto';
+import { CategoriaDTO } from '../../models/categoria.dto';
 
 
 @Injectable()

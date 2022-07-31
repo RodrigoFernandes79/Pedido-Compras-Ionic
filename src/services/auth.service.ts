@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelper } from 'angular2-jwt';
-import { Dev_Config } from '../app/config/dev.config';
-import { CredenciaisDTO } from '../app/models/credenciais.dto';
-import { LocalUser } from '../app/models/local_user';
+import { Dev_Config } from '../config/dev.config';
+import { CredenciaisDTO } from '../models/credenciais.dto';
+import { LocalUser } from '../models/local_user';
 import { StorageService } from './storage.service';
 
 @Injectable()
