@@ -1,8 +1,11 @@
+import { ClienteDTO } from './../../app/models/cliente.dto';
 
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
+import { ClienteService } from '../../services/models/cliente.service';
+import { Dev_Config } from '../../app/config/dev.config';
 
 
 
@@ -13,17 +16,28 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ProfilesPage {
 
-	email:string;
+	cliente : ClienteDTO
 
   constructor(public navCtrl: NavController,
 		 public navParams: NavParams,
-		  public storageService: StorageService) {
+		  public storageService: StorageService,
+			public clienteService : ClienteService) {
   }
 
   ionViewDidLoad() {
-		let LocalUser = this.storageService.getLocalUser();
-    if(LocalUser  && LocalUser.email){
-			this.email = LocalUser.email
+		let localUser = this.storageService.getLocalUser();
+    if(localUser  && localUser.email){
+			this.clienteService.findByEmail(localUser.email)
+			.subscribe(response =>{
+				this.cliente = response;
+				this.clienteService.getImageFromBucket(this.cliente.id)
+				.subscribe(response =>{
+					this.cliente.imageUrl = `${Dev_Config.bucketBaseUrl}/cp${this.cliente.id}.jpg`
+				}),
+				error=>{}
+
+			}),
+			error=>{}
 		}
   }
 

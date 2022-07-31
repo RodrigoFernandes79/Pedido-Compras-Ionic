@@ -1,3 +1,13 @@
 page-profiles {
-
+    .circle {
+        width: auto;
+        height: auto;
+        border-radius: 100%;
+        margin: 25px auto 0 auto;
+    }
+    .nome {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 10px;
+    }
 }
