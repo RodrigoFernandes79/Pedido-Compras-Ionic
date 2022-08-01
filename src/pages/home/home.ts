@@ -1,6 +1,6 @@
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { AuthService } from '../../services/auth.service';
 
@@ -18,7 +18,8 @@ export class HomePage {
 		senha:''
 	}
 
-  constructor(public navCtrl: NavController, public menu: MenuController, public auth:AuthService) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public auth:AuthService,
+		public alertCtrl: AlertController) {
 
   }
 
@@ -28,7 +29,17 @@ export class HomePage {
 			this.auth.sucessfullLogin(response.headers.get("Authorization"));
 			this.navCtrl.setRoot('CategoriasPage')
 		},
-		error=>{})
+		error=>{
+
+			const alert = this.alertCtrl.create({
+				title: 'Erro 401! Falha na autenticação',
+				subTitle: 'Email e/ou senha inválidos!',
+				buttons: ['OK']
+			});
+			alert.present();
+     console.log(error)
+
+		})
 
 	}
 

@@ -38,7 +38,11 @@ export class ProfilesPage {
 
 			}),
 			error=>{}
+			}
 		}
-  }
 
-}
+	}
+
+
+
+
