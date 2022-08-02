@@ -42,6 +42,23 @@ export class HomePage {
 		})
 
 	}
+	ionViewDidEnter():void{
+		this.auth.refreshToken()
+		.subscribe(response=>{
+			this.auth.sucessfullLogin(response.headers.get("Authorization"));
+			this.navCtrl.setRoot('CategoriasPage')
+		},
+		error=>{
+
+			const alert = this.alertCtrl.create({
+				title: 'Erro 401! Falha na autenticação',
+				subTitle: 'Email e/ou senha inválidos!',
+				buttons: ['OK']
+			});
+			alert.present();
+     console.log(error)
+		})
+	}
 
 	ionViewWillEnter(): void {
 		this.menu.swipeEnable(false);

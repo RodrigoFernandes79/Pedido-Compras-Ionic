@@ -20,6 +20,11 @@ export class AuthService{
 		return this.http.post(`${Dev_Config.baseUrl}/login`,creds,{observe:'response',responseType:'text'});
 	}
 
+	refreshToken(){
+
+		return this.http.post(`${Dev_Config.baseUrl}/auth/refresh_token`,{},{observe:'response',responseType:'text'});
+	}
+
 	sucessfullLogin(authorizationValue : string){
 		let tok = authorizationValue.substring(7)
 		let user : LocalUser ={
