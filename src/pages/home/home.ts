@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class HomePage {
 	}
 
   constructor(public navCtrl: NavController, public menu: MenuController, public auth:AuthService,
-		public alertCtrl: AlertController) {
+		public alertCtrl: AlertController, public storage:StorageService) {
 
   }
 
@@ -43,10 +44,12 @@ export class HomePage {
 
 	}
 	ionViewDidEnter():void{
+		if(this.storage.getLocalUser() !== null){
 		this.auth.refreshToken()
 		.subscribe(response=>{
 			this.auth.sucessfullLogin(response.headers.get("Authorization"));
 			this.navCtrl.setRoot('CategoriasPage')
+
 		},
 		error=>{
 
@@ -59,7 +62,7 @@ export class HomePage {
      console.log(error)
 		})
 	}
-
+	}
 	ionViewWillEnter(): void {
 		this.menu.swipeEnable(false);
 		}
