@@ -4,17 +4,9 @@ import { Dev_Config } from '../../config/dev.config';
 
 import { CategoriaService } from './../../services/models/categoria.service';
 import { Component,  } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CategoriaDTO } from '../../models/categoria.dto';
 
-
-
-/**
- * Generated class for the CategoriasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,7 +20,7 @@ export class CategoriasPage {
 
   constructor(public navCtrl: NavController,
 		 public navParams: NavParams,
-		 public categoriaService: CategoriaService) {
+		 public categoriaService: CategoriaService, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -38,8 +30,14 @@ export class CategoriasPage {
 			console.log(response)
 		},
 		error =>{
+			const alert = this.alertCtrl.create({
+				title: 'Erro ' +error.status+' Not found!',
+				subTitle: 'Não Encontrado',
+				buttons: ['OK']
+			});
+			alert.present();
+			console.log(error);
 
-			console.log(error.message);
 		}
 	);
 }
