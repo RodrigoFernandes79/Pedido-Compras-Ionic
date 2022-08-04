@@ -14,6 +14,9 @@ import {  AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { ClienteService } from '../services/models/cliente.service';
 import { AuthInterceptorProvider } from '../interceptors/auth.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth.interceptor';
     BrowserModule,
 		HttpClientModule,
     IonicModule.forRoot(MyApp),
+		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
