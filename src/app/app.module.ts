@@ -16,6 +16,8 @@ import { ClienteService } from '../services/models/cliente.service';
 import { AuthInterceptorProvider } from '../interceptors/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { EstadoService } from '../services/models/estado.service';
+import { CidadeService } from '../services/models/cidade.service';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { CommonModule } from '@angular/common';
 		AuthInterceptorProvider,
 		AuthService,
 		StorageService,
-		ClienteService
+		ClienteService,
+		EstadoService,
+		CidadeService,
   ]
 })
 export class AppModule {}
