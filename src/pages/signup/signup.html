@@ -10,15 +10,20 @@
         <ion-item>
             <ion-label stacked>Nome*</ion-label>
             <ion-input formControlName="nome" type="text">
-
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors">
+            Campo NOME não pode ser vazio e deve ter no mínimo 5 caracteres </p>
 
         <ion-item>
             <ion-label stacked>Email*</ion-label>
             <ion-input formControlName="email" type="text">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors">
+            Campo EMAIL não pode ser vazio e deve ter preenchimento válido </p>
+
+
         <ion-list radio-group name="tipo">
             <ion-list-header>
                 Tipo de Cliente
@@ -33,45 +38,70 @@
             </ion-item>
         </ion-list>
         <ion-item>
-            <ion-label stacked>CPF ou CNPJ</ion-label>
+            <ion-label stacked>CPF ou CNPJ*</ion-label>
             <ion-input formControlName="CpfOuCnpj" type="text">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.CpfOuCnpj.dirty && formGroup.controls.CpfOuCnpj.errors">
+            Campo CPFouCNPJ não pode ser vazio e deve ter preenchimento válido </p>
+
         <ion-item>
             <ion-label stacked>Senha*</ion-label>
             <ion-input formControlName="senha" type="password">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors">
+            Campo SENHA não pode ser vazio
+        </p>
+
         <ion-item>
             <ion-label stacked>Logradouro*</ion-label>
             <ion-input formControlName="logradouro" type="text">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.logradouro.dirty && formGroup.controls.logradouro.errors">
+            Campo LOGRADOURO não pode ser vazio
+        </p>
+
         <ion-item>
             <ion-label stacked>Número*</ion-label>
             <ion-input formControlName="numero" type="text">
             </ion-input>
+            <p class="danger" *ngIf="formGroup.controls.numero.dirty && formGroup.controls.numero.errors">
+                Campo NÚMERO não pode ser vazio
+            </p>
         </ion-item>
+
         <ion-item>
             <ion-label stacked>Complemento</ion-label>
             <ion-input formControlName="complemento" type="text">
             </ion-input>
         </ion-item>
+
         <ion-item>
             <ion-label stacked>Bairro</ion-label>
             <ion-input formControlName="bairro" type="text">
             </ion-input>
         </ion-item>
+
         <ion-item>
             <ion-label stacked>CEP*</ion-label>
             <ion-input formControlName="cep" type="text">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors">
+            Campo CEP não pode ser vazio
+        </p>
+
         <ion-item>
             <ion-label stacked>Telefone 1*</ion-label>
             <ion-input formControlName="telefone1" type="text">
             </ion-input>
         </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors">
+            Campo TELEFONE 1 não pode ser vazio
+        </p>
+
         <ion-item>
             <ion-label stacked>Telefone 2</ion-label>
             <ion-input formControlName="telefone2" type="text">
@@ -95,7 +125,7 @@
             </ion-select>
         </ion-item>
 
-        <button ion-button block type="submit">Criar conta</button>
+        <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
 
     </form>
 </ion-content>

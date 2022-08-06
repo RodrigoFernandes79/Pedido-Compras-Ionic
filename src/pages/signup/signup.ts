@@ -24,8 +24,8 @@ export class SignupPage {
 		 public cidadeService: CidadeService) {
 
 		this.formGroup = this.formBuilder.group({
-			nome:['Ex: João da Silva', [Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
-			email:['Ex: Joao@mail.com',[Validators.required,Validators.email]],
+			nome:['João da Silva', [Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
+			email:['Joao@mail.com',[Validators.required,Validators.email]],
 			senha:['111',[Validators.required]],
 			CpfOuCnpj:['23623364896',[Validators.required,Validators.minLength(11),Validators.maxLength(14)]],
 			telefone1:['36665954',[Validators.required]],
