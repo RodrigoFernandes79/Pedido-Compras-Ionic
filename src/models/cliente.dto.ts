@@ -4,4 +4,5 @@ export class ClienteDTO{
 	email:string;
 	imageUrl?:string;
 
+
 }

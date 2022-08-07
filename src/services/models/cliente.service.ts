@@ -7,6 +7,9 @@ import { StorageService } from '../storage.service';
 
 
 
+
+
+
 @Injectable()
 export class ClienteService{
 
@@ -23,4 +26,16 @@ export class ClienteService{
 		let url = `${Dev_Config.bucketBaseUrl}/cp${id}.jpg`;
 		return this.http.get(url,{responseType: 'blob'});
 	}
+
+	insert(obj : ClienteDTO){
+		return this.http.post(
+				`${Dev_Config.baseUrl}/clientes`,
+				obj,
+				{
+						observe: 'response',
+						responseType: 'json',
+
+				}
+		);
+}
 }

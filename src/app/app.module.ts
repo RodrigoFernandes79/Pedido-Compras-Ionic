@@ -32,6 +32,7 @@ import { CidadeService } from '../services/models/cidade.service';
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

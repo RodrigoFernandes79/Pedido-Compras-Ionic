@@ -1,10 +1,12 @@
+import { ClienteService } from './../../services/models/cliente.service';
 import { CidadeDTO } from './../../models/cidade.dto';
 import { EstadoDTO } from './../../models/estado.dto';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CidadeService } from '../../services/models/cidade.service';
 import { EstadoService } from '../../services/models/estado.service';
+
 
 
 
@@ -19,23 +21,26 @@ export class SignupPage {
 	estados:EstadoDTO
 	cidades:CidadeDTO
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
 		 public formBuilder:FormBuilder, public estadoService:EstadoService,
-		 public cidadeService: CidadeService) {
+		 public cidadeService: CidadeService, public clienteService:ClienteService,
+		 public alertCtrl: AlertController) {
 
 		this.formGroup = this.formBuilder.group({
-			nome:['João da Silva', [Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
-			email:['Joao@mail.com',[Validators.required,Validators.email]],
-			senha:['111',[Validators.required]],
-			CpfOuCnpj:['23623364896',[Validators.required,Validators.minLength(11),Validators.maxLength(14)]],
-			telefone1:['36665954',[Validators.required]],
+			nome:['Fujiro Kujikawa', [Validators.required,Validators.minLength(5),Validators.maxLength(120)]],
+			email:['kujikawa@mail.com',[Validators.required,Validators.email]],
+			tipo : ['1', [Validators.required]],
+			senha:['1187',[Validators.required]],
+			cpfOuCnpj:['02704479461',[Validators.required,Validators.minLength(11),Validators.maxLength(14)]],
+			telefone1:['996356987',[Validators.required]],
 			telefone2:['',[]],
 			telefone3:['',[]],
-			logradouro:['Rua Tucunaré',[Validators.required]],
-			numero:['22',[Validators.required]],
-			complemento:['',[]],
-			bairro:['',[]],
-			cep:['25103625',[Validators.required]],
+			logradouro:['Rua Jirayame',[Validators.required]],
+			numero:['242',[Validators.required]],
+			complemento:['702',[]],
+			bairro:['Jaspomesa',[]],
+			cep:['51098563',[Validators.required]],
 			estadoId:[null,[Validators.required]],
 			cidadeId:[null,Validators.required]
 
@@ -51,7 +56,9 @@ export class SignupPage {
 		this.updateCidades()
 
 	 },
-	 error =>{})
+	 error =>{
+
+	 })
   }
 
 
@@ -66,8 +73,52 @@ export class SignupPage {
 		error =>{})
 	}
 	signupUser(){
-		console.log("form enviado")
+		console.log(this.formGroup.value)
+		this.clienteService.insert(this.formGroup.value)
+		.subscribe(response=>{
+		this.showInsertOk();
+
+		},
+		error=>{
+			console.log(error)
+if(error.error.mensagem==='cpfOuCNPJ  já existe'){
+			let alert = this.alertCtrl.create({
+				title: 'Erro '+ error.status+ ' !',
+				message:"Erro na Validação! "+ error.error.mensagem,
+				enableBackdropDismiss: false,
+				buttons: ['Ok']
+			});
+			alert.present();
+		}
+		else{
+			let alert = this.alertCtrl.create({
+				title: 'Erro '+ error.status+ ' !',
+				message:"Erro na Validação! "+ error.error.erro,
+				enableBackdropDismiss: false,
+				buttons: ['Ok']
+			});
+			alert.present();
+		}
+
+	})
 	}
+
+showInsertOk() {
+	let alert = this.alertCtrl.create({
+		title: 'Sucesso!',
+		message: 'Cadastro efetuado com sucesso',
+		enableBackdropDismiss: false,
+		buttons: [
+			{
+				text: 'Ok',
+				handler: () => {
+					this.navCtrl.setRoot('HomePage');
+				}
+			}
+		]
+	});
+	alert.present();
 }
 
+}
 
