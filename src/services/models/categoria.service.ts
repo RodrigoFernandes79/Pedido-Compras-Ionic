@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dev_Config } from '../../config/dev.config';
+import { Categoria } from '../../models/categoria';
 
 
 
@@ -22,5 +23,8 @@ export class CategoriaService{
 			return this.http.get<CategoriaDTO>(`${Dev_Config.baseUrl}/categorias`);
 		}
 
+		findById(categoria_id:string):Observable<Categoria>{
+			return this.http.get<Categoria>(`${Dev_Config.baseUrl}/categorias/pages/${categoria_id}`)
+		}
 
 }
