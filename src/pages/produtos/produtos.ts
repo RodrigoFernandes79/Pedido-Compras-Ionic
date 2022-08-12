@@ -1,3 +1,4 @@
+import { Dev_Config } from './../../config/dev.config';
 import { Categoria } from './../../models/categoria';
 
 import { Component } from '@angular/core';
@@ -25,22 +26,27 @@ export class ProdutosPage {
 
 		this.items = response['content']
 		console.log(this.items)
-this.items.map((resposta)=> {
+	this.items.map((resposta)=> {
 	this.items =resposta.produtos
 	console.log(resposta.produtos)
-
+	this.loadImageUrls()
 
 })
-return this.items
-
 
 			})
 
-
-
-
-
 		}
+loadImageUrls(){
+	for(var i=0;i<this.items.length;i++){
+		let item = this.items[i];
+		this.catService.getSmallImageFromBucket(item.id)
+		.subscribe(resposta=>{
+			item.imageUrl = `${Dev_Config.bucketBaseUrl}/prod${item.id}-small.jpg`;
+		},
+		error=>{
 
+		})
+	}
+}
 
 		}

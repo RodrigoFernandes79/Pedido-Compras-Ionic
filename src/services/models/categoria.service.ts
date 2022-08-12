@@ -27,4 +27,8 @@ export class CategoriaService{
 			return this.http.get<Categoria>(`${Dev_Config.baseUrl}/categorias/pages/${categoria_id}`)
 		}
 
+		getSmallImageFromBucket(id: string): Observable<any>{
+			let url = `${Dev_Config.bucketBaseUrl}/prod${id}-small.jpg`;
+			return this.http.get(url,{responseType: 'blob'});
+		}
 }
