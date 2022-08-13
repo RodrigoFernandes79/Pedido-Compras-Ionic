@@ -1,3 +1,4 @@
+import { CartService } from './../../services/models/cart.service';
 import { ProdutoService } from './../../services/models/produto.service';
 
 
@@ -19,7 +20,8 @@ export class ProdutoDetailPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-		 public produtoService: ProdutoService, public alertCtrl: AlertController) {
+		 public produtoService: ProdutoService, public alertCtrl: AlertController,
+		 public cartService:CartService) {
   }
 
   ionViewDidLoad() {
@@ -48,6 +50,13 @@ ifImageurlExists(){
 	},
 	error=>{
 })
+}
+
+addToCart(produto:ProdutoDTO){
+	console.log(produto)
+this.cartService.addProduto(produto)
+console.log(produto)
+this.navCtrl.setRoot('CartPage')
 }
 
 }

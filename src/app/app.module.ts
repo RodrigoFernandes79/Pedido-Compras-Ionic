@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EstadoService } from '../services/models/estado.service';
 import { CidadeService } from '../services/models/cidade.service';
+import { CartService } from '../services/models/cart.service';
 
 
 @NgModule({
@@ -51,7 +52,9 @@ import { CidadeService } from '../services/models/cidade.service';
 		ClienteService,
 		EstadoService,
 		CidadeService,
-		ProdutoService
+		ProdutoService,
+		CategoriaService,
+		CartService
   ]
 })
 export class AppModule {}
