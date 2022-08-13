@@ -1,9 +1,11 @@
+
 import { Dev_Config } from './../../config/dev.config';
 import { Categoria } from './../../models/categoria';
 
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { CategoriaService } from '../../services/models/categoria.service';
+
 
 
 @IonicPage()
@@ -16,7 +18,7 @@ export class ProdutosPage {
 	items:Categoria[]=[]
 
   constructor(public navCtrl: NavController, public navParams: NavParams ,
-		public catService:CategoriaService) {
+		public catService:CategoriaService, public alertCtrl:AlertController) {
   }
 
   ionViewDidLoad() {
@@ -28,25 +30,31 @@ export class ProdutosPage {
 		console.log(this.items)
 	this.items.map((resposta)=> {
 	this.items =resposta.produtos
-	console.log(resposta.produtos)
 	this.loadImageUrls()
-
+	console.log(resposta.produtos)
+	})
+},
+error=>{
 })
+}
 
-			})
-
-		}
 loadImageUrls(){
 	for(var i=0;i<this.items.length;i++){
 		let item = this.items[i];
+
 		this.catService.getSmallImageFromBucket(item.id)
 		.subscribe(resposta=>{
 			item.imageUrl = `${Dev_Config.bucketBaseUrl}/prod${item.id}-small.jpg`;
 		},
 		error=>{
-
-		})
+	})
 	}
+
+}
+
+
+showDetails(produto_id:string){
+	this.navCtrl.push('ProdutoDetailPage',{prod_id:produto_id})
 }
 
 		}

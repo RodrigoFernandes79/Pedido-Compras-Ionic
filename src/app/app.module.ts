@@ -1,3 +1,4 @@
+import { ProdutoService } from './../services/models/produto.service';
 import { CategoriaService } from './../services/models/categoria.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http'
@@ -50,6 +51,7 @@ import { CidadeService } from '../services/models/cidade.service';
 		ClienteService,
 		EstadoService,
 		CidadeService,
+		ProdutoService
   ]
 })
 export class AppModule {}
