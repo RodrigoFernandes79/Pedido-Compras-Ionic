@@ -29,7 +29,7 @@ export class ProfilesPage {
     if(localUser  && localUser.email){
 			this.clienteService.findByEmail(localUser.email)
 			.subscribe(response =>{
-				this.cliente = response;
+				this.cliente = response as ClienteDTO;
 				this.clienteService.getImageFromBucket(this.cliente.id)
 				.subscribe(response =>{
 					this.cliente.imageUrl = `${Dev_Config.bucketBaseUrl}/cp${this.cliente.id}.jpg`

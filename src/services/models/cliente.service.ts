@@ -17,8 +17,8 @@ export class ClienteService{
 
 	}
 
-	findByEmail( email: string):Observable<ClienteDTO>{
-		return this.http.get<ClienteDTO>(`${Dev_Config.baseUrl}/clientes/email?email=${email}`)
+	findByEmail( email: string){
+		return this.http.get(`${Dev_Config.baseUrl}/clientes/email?email=${email}`)
 
 	}
 
