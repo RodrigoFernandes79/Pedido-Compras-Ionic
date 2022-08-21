@@ -6,6 +6,7 @@ import { CartItem } from '../../models/cartItem';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { EnderecoDTO } from '../../models/endereco.dto';
 import { ClienteService } from '../../services/models/cliente.service';
+import { PedidoService } from '../../services/models/pedido.service';
 
 
 @IonicPage()
@@ -21,7 +22,8 @@ export class OrderConfirmationPage {
 	endereco: EnderecoDTO
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-		public CartService: CartService, public clienteService:ClienteService) {
+		public CartService: CartService, public clienteService:ClienteService,
+		public pedidoService: PedidoService) {
 
 		this.pedido = this.navParams.get('pedido')
   }
@@ -46,5 +48,19 @@ private findEndereco(id:string, list:EnderecoDTO[]):EnderecoDTO {
 }
 total(){
 return this.CartService.total()
+}
+
+checkout() {
+this.pedidoService.insert(this.pedido)
+.subscribe(response => {
+	this.CartService.createOrClearCart()
+	console.log(response.headers.get('location'))
+},
+error=>{
+	this.navCtrl.setRoot('HomePage')
+})
+}
+backPage(){
+	this.navCtrl.setRoot('CartPage')
 }
 }

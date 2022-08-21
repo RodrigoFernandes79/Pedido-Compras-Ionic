@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { EstadoService } from '../services/models/estado.service';
 import { CidadeService } from '../services/models/cidade.service';
 import { CartService } from '../services/models/cart.service';
+import { PedidoService } from '../services/models/pedido.service';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { CartService } from '../services/models/cart.service';
 		CidadeService,
 		ProdutoService,
 		CategoriaService,
-		CartService
+		CartService,
+		PedidoService
   ]
 })
 export class AppModule {}
