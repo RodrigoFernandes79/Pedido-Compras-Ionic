@@ -21,6 +21,8 @@ export class OrderConfirmationPage {
 	cliente: ClienteDTO
 	endereco: EnderecoDTO
 
+	codigoPedido:string
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
 		public CartService: CartService, public clienteService:ClienteService,
 		public pedidoService: PedidoService) {
@@ -54,13 +56,24 @@ checkout() {
 this.pedidoService.insert(this.pedido)
 .subscribe(response => {
 	this.CartService.createOrClearCart()
+	this.codigoPedido = this.extractId(response.headers.get('location'))
 	console.log(response.headers.get('location'))
 },
 error=>{
+	console.log(error)
 	this.navCtrl.setRoot('HomePage')
 })
 }
 backPage(){
 	this.navCtrl.setRoot('CartPage')
+}
+home(){
+	this.navCtrl.setRoot('CategoriasPage')
+}
+//função para extrair o id do pedido
+private extractId(location:string): string{
+	let position = location.lastIndexOf('/')
+	return location.substring(position +1 ,location.length)
+
 }
 }

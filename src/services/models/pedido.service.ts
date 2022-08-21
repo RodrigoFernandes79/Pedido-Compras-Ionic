@@ -20,7 +20,7 @@ export class PedidoService{
 			obj,
 			{
 				observe:'response',
-				responseType: 'text'
+				responseType: 'json'
 			}
 		)
 	}
