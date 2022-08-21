@@ -21,6 +21,12 @@ export class ClienteService{
 		return this.http.get(`${Dev_Config.baseUrl}/clientes/email?email=${email}`)
 
 	}
+	findById( id: string){
+		return this.http.get(`${Dev_Config.baseUrl}/clientes/${id}`)
+
+	}
+
+
 
 	getImageFromBucket(id: string): Observable<any>{
 		let url = `${Dev_Config.bucketBaseUrl}/cp${id}.jpg`;
