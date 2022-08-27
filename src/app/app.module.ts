@@ -21,6 +21,7 @@ import { EstadoService } from '../services/models/estado.service';
 import { CidadeService } from '../services/models/cidade.service';
 import { CartService } from '../services/models/cart.service';
 import { PedidoService } from '../services/models/pedido.service';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { PedidoService } from '../services/models/pedido.service';
 		ProdutoService,
 		CategoriaService,
 		CartService,
-		PedidoService
+		PedidoService,
+		Camera
   ]
 })
 export class AppModule {}
