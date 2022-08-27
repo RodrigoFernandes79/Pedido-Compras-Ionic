@@ -22,6 +22,7 @@ import { CidadeService } from '../services/models/cidade.service';
 import { CartService } from '../services/models/cart.service';
 import { PedidoService } from '../services/models/pedido.service';
 import { Camera } from '@ionic-native/camera';
+import { ImageUtilService } from '../services/image-util.service';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { Camera } from '@ionic-native/camera';
 		CategoriaService,
 		CartService,
 		PedidoService,
-		Camera
+		Camera,
+		ImageUtilService
   ]
 })
 export class AppModule {}
